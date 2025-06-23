@@ -36,6 +36,7 @@ The system follows a multi-step RAG pipeline:
                                                       |  Web Interface |
                                                       +----------------+
 
+```
 ---
 
 ## 🧠 Core Technologies
