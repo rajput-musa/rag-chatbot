@@ -1,1 +1,9 @@
-requirements.txt
+streamlit
+langchain-pinecone
+langchain-community
+langchain-groq
+langchain
+sentence-transformers
+cohere
+python-dotenv
+pydantic
