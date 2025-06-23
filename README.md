@@ -21,22 +21,6 @@ The system follows a multi-step RAG pipeline:
 5. Groq's Llama 3 70B generates a final answer using the top-ranked context.
 6. The chatbot displays the answer along with the referenced sources.
 
-   ```text
-+-----------+         +--------------+       +-----------+       +-----------+
-|  User Qs  | ─────▶  |   Embedding  | ───▶  | Retrieval | ───▶  | Reranking |
-+-----------+         +--------------+       +-----------+       +-----------+
-                                                                |
-                                                                ▼
-                                                    +----------------------+
-                                                    |  LLM Answer via Groq |
-                                                    +----------------------+
-                                                                |
-                                                                ▼
-                                                      +----------------+
-                                                      |  Web Interface |
-                                                      +----------------+
-
-```
 ---
 
 ## 🧠 Core Technologies
