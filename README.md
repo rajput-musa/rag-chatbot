@@ -1,7 +1,5 @@
-Here is the full, fixed, and expanded `README.md` file content you can copy and paste into your project:
-
 ````markdown
-# 🔍 Advanced RAG Document Chatbot
+# 🔍 RAG Document Chatbot
 
 An interactive **Retrieval-Augmented Generation (RAG)** chatbot that answers questions based on any document corpus. It combines semantic search, re-ranking, and large language models (LLMs) to deliver accurate, context-aware, and **source-backed answers**.
 
