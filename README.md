@@ -2,6 +2,10 @@
 
 An interactive **Retrieval-Augmented Generation (RAG)** chatbot that answers questions based on any document corpus. It combines semantic search, re-ranking, and large language models (LLMs) to deliver accurate, context-aware, and **source-backed answers**.
 
+![image](https://github.com/user-attachments/assets/f0c28587-a1d3-43d1-860e-5b2cf54d93c6)
+
+![image](https://github.com/user-attachments/assets/e635f2dd-d397-4558-ac43-bfbec41ae362)
+
 ## 🚀 Live Demo
 
 ▶️ [Try it on Hugging Face Spaces](https://huggingface.co/spaces/MusaR/rag-chatbot)
