@@ -62,8 +62,6 @@ Create free accounts and obtain API keys from:
 
 ### 📦 2. Preprocess Your Documents
 
-Use the provided ingestion notebook (link below) to:
-
 * Split PDF files into chunks
 * Generate embeddings using `all-MiniLM-L6-v2`
 * Upload vectors to Pinecone
@@ -72,9 +70,6 @@ Use the provided ingestion notebook (link below) to:
 >
 > * **Dimension**: 384
 > * **Metric**: cosine
-> * **Pod Type**: starter or higher
-
-📄 **Ingestion Notebook** (Colab/Gist): *\[Insert your link here]*
 
 ---
 
@@ -83,7 +78,7 @@ Use the provided ingestion notebook (link below) to:
 #### ✅ Local Deployment
 
 ```bash
-git clone https://github.com/yourname/rag-chatbot.git
+git clone https://github.com/rajput-musa/rag-chatbot.git
 cd rag-chatbot
 pip install -r requirements.txt
 streamlit run app.py
