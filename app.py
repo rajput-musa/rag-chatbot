@@ -46,7 +46,7 @@ def initialize_services():
 
     with st.spinner("Initializing services... (this happens once)"):
         # Embedding model (still runs locally but is very fast)
-        embeddings = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2", model_kwargs={'device': 'cuda'})
+        embeddings = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2", model_kwargs={'device': 'cpu'})
         
         # Pinecone Vector Store
         vectorstore = PineconeVectorStore.from_existing_index(index_name=INDEX_NAME, embedding=embeddings)
