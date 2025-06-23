@@ -1,30 +1,129 @@
-# Advanced RAG Document Chatbot
+Here is the full, fixed, and expanded `README.md` file content you can copy and paste into your project:
 
-This project is an interactive RAG (Retrieval-Augmented Generation) chatbot designed to answer questions from a corpus of documents. It leverages several modern AI services and techniques to provide accurate, sourced answers.
+````markdown
+# 🔍 Advanced RAG Document Chatbot
 
-## Live Demo
-[Click here to access the live application](https://huggingface.co/spaces/MusaR/rag-chatbot) 
-*(Note: The application is demonstrated using the textbook "Operating Systems Internals and Design Principles" by William Stallings.)*
+An interactive **Retrieval-Augmented Generation (RAG)** chatbot that answers questions based on any document corpus. It combines semantic search, re-ranking, and large language models (LLMs) to deliver accurate, context-aware, and **source-backed answers**.
 
-## Core Architecture & Technologies
-This chatbot implements a multi-stage RAG pipeline:
+## 🚀 Live Demo
 
-*   **Vector Database:** Pinecone (for efficient semantic search and storage of document embeddings)
-*   **LLM (Generator):** Groq API with Llama 3 70B (for fast and high-quality answer generation)
-*   **Re-ranker:** Cohere Rerank API (to refine and prioritize retrieved context for accuracy)
-*   **Embedding Model:** `all-MiniLM-L6-v2` (for generating text embeddings)
-*   **Frontend:** Streamlit (for the interactive web interface)
-*   **Deployment:** Hugging Face Spaces (utilizing a custom Docker environment)
+▶️ [Try it on Hugging Face Spaces](https://huggingface.co/spaces/MusaR/rag-chatbot)
 
-## Key Features
-*   **Advanced Retrieval Pipeline:** Implemented a retrieve-then-rerank strategy to enhance the quality of context provided to the LLM.
-*   **Sourced Answers:** The system is designed to provide answers grounded in the provided documents, with a mechanism to display the source passages.
+> *(Demo uses the textbook: "Operating Systems Internals and Design Principles" by William Stallings.)*
 
+---
 
-## How to Use with Your Own Documents
-This deployed version is configured to use a pre-existing Pinecone index. To use this system with your own documents:
-1.  Ensure you have API keys for Pinecone, Groq, and Cohere.
-2.  You will need to create and populate your own Pinecone index (dimension: 384, metric: cosine).
-3.  A [sample ingestion script/notebook (link to your Gist or simplified Colab notebook here)] can be used as a starting point to process your PDFs and upload them to your Pinecone index.
-4.  This application can then be forked on Hugging Face Spaces, and your API keys can be added to the secrets of your forked Space to connect to your data.
+## ⚙️ How It Works
+
+The system follows a multi-step RAG pipeline:
+
+1. User submits a question.
+2. The question is embedded using `all-MiniLM-L6-v2`.
+3. Pinecone retrieves semantically relevant document chunks.
+4. Cohere's Rerank API refines the context ordering.
+5. Groq's Llama 3 70B generates a final answer using the top-ranked context.
+6. The chatbot displays the answer along with the referenced sources.
+
+```text
++-----------+         +--------------+       +-----------+       +-----------+
+|  User Qs  | ─────▶  |   Embedding  | ───▶  | Retrieval | ───▶  | Reranking |
++-----------+         +--------------+       +-----------+       +-----------+
+                                                                |
+                                                                ▼
+                                                    +----------------------+
+                                                    |  LLM Answer via Groq |
+                                                    +----------------------+
+                                                                |
+                                                                ▼
+                                                      +----------------+
+                                                      |  Web Interface |
+                                                      +----------------+
+````
+
+---
+
+## 🧠 Core Technologies
+
+| Component  | Technology / Service                                            |
+| ---------- | --------------------------------------------------------------- |
+| Vector DB  | Pinecone                                                        |
+| LLM        | Llama 3 70B via [Groq API](https://console.groq.com/)           |
+| Re-ranking | [Cohere Rerank](https://cohere.com/rerank)                      |
+| Embeddings | `all-MiniLM-L6-v2` from `sentence-transformers`                 |
+| Frontend   | [Streamlit](https://streamlit.io/)                              |
+| Deployment | [Hugging Face Spaces](https://huggingface.co/spaces) via Docker |
+
+---
+
+## ✨ Features
+
+* 🔍 **Semantic Search + Reranking** for high-quality context retrieval.
+* 📚 **Source-aware Answers** with citations from documents.
+* ⚡ **Low-latency Generation** using Groq's LLM API.
+* 🌐 **Web-based UI** built with Streamlit.
+* 📦 **Dockerized** for easy deployment and portability.
+
+---
+
+## 📁 Using Your Own Documents
+
+To customize the chatbot with your own data:
+
+### 🔑 1. Get API Keys
+
+Create free accounts and obtain API keys from:
+
+* Pinecone: [https://www.pinecone.io/](https://www.pinecone.io/)
+* Groq: [https://console.groq.com/](https://console.groq.com/)
+* Cohere: [https://cohere.com/](https://cohere.com/)
+
+---
+
+### 📦 2. Preprocess Your Documents
+
+Use the provided ingestion notebook (link below) to:
+
+* Split PDF files into chunks
+* Generate embeddings using `all-MiniLM-L6-v2`
+* Upload vectors to Pinecone
+
+> ⚙️ Pinecone index configuration:
+>
+> * **Dimension**: 384
+> * **Metric**: cosine
+> * **Pod Type**: starter or higher
+
+📄 **Ingestion Notebook** (Colab/Gist): *\[Insert your link here]*
+
+---
+
+### 🚀 3. Deploy or Run Locally
+
+#### ✅ Local Deployment
+
+```bash
+git clone https://github.com/yourname/rag-chatbot.git
+cd rag-chatbot
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+Create a `.env` file with your API keys:
+
+```
+PINECONE_API_KEY=your_key
+PINECONE_ENV=your_env
+PINECONE_INDEX=your_index
+
+COHERE_API_KEY=your_key
+GROQ_API_KEY=your_key
+```
+
+---
+
+#### ☁️ Deploy on Hugging Face Spaces
+
+1. Fork this repository or space
+2. Add your API keys in **Settings → Secrets**
+3. Update `app.py` with your Pinecone index and document references
 
