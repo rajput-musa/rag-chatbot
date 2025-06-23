@@ -1,4 +1,4 @@
-# 🔍 Advanced RAG Document Chatbot
+# 🔍 RAG Document Chatbot
 
 An interactive **Retrieval-Augmented Generation (RAG)** chatbot that answers questions based on any document corpus. It combines semantic search, re-ranking, and large language models (LLMs) to deliver accurate, context-aware, and **source-backed answers**.
 
@@ -21,20 +21,20 @@ The system follows a multi-step RAG pipeline:
 5. Groq's Llama 3 70B generates a final answer using the top-ranked context.
 6. The chatbot displays the answer along with the referenced sources.
 
-    +-----------+         +--------------+       +-----------+       +-----------+
-    |  User Qs  | ─────▶  |   Embedding  | ───▶  | Retrieval | ───▶  | Reranking |
-    +-----------+         +--------------+       +-----------+       +-----------+
-                                                                    |
-                                                                    ▼
-                                                        +----------------------+
-                                                        |  LLM Answer via Groq |
-                                                        +----------------------+
-                                                                    |
-                                                                    ▼
-                                                          +----------------+
-                                                          |  Web Interface |
-                                                          +----------------+
-
+   ```text
++-----------+         +--------------+       +-----------+       +-----------+
+|  User Qs  | ─────▶  |   Embedding  | ───▶  | Retrieval | ───▶  | Reranking |
++-----------+         +--------------+       +-----------+       +-----------+
+                                                                |
+                                                                ▼
+                                                    +----------------------+
+                                                    |  LLM Answer via Groq |
+                                                    +----------------------+
+                                                                |
+                                                                ▼
+                                                      +----------------+
+                                                      |  Web Interface |
+                                                      +----------------+
 
 ---
 
